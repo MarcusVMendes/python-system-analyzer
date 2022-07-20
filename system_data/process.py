@@ -1,4 +1,4 @@
-from psutil import process_iter
+from psutil import process_iter, pids
 from dashboard.interface import ui
 
 
@@ -15,9 +15,12 @@ def process_with_cpu_usage():
         if '-' in iter_proc['name']:
             iter_proc['name'] = iter_proc['name'].split('-')[0]
 
+        if '.' in iter_proc['name']:
+            iter_proc['name'] = iter_proc['name'].split('.')[0]
+
         if iter_proc['name'] not in name_list:
             name_list.append(iter_proc['name'])
-        process_list.append(iter_proc)
+            process_list.append(iter_proc)
 
     process_list.sort(key=lambda k: k['cpu_percent'], reverse=True)
     return process_list[:10]
@@ -47,6 +50,18 @@ def apend_data_to_interface():
         )
 
 
+def total_process_number():
+    total_process = len(pids())
+    return total_process
+
+
+def apend_total_process_to_interface():
+    total_process = total_process_number()
+    interface = ui.items[0].items[0]
+    interface.title = f'Total System Process: {total_process}'
+
+
 def process_module():
     # export this module to the main function
+    apend_total_process_to_interface()
     apend_data_to_interface()
