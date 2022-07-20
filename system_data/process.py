@@ -51,11 +51,18 @@ def apend_data_to_interface():
 
 
 def total_process_number():
+    """
+    Return a number of total system process
+    """
     total_process = len(pids())
     return total_process
 
 
 def apend_total_process_to_interface():
+    """
+    Get data from total_process_number function and
+    apends this to dashboard interface
+    """
     total_process = total_process_number()
     interface = ui.items[0].items[0]
     interface.title = f'Total System Process: {total_process}'
