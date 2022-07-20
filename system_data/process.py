@@ -32,7 +32,7 @@ https://psutil.readthedocs.io/en/latest/index.html?highlight=process_iter#psutil
 """
 
 
-def apend_data_to_interface():
+def apend_process_with_cpu_usage_to_interface():
     """
     Get data from process_with_cpu_usage function and
     apends this to dashboard interface
@@ -71,4 +71,4 @@ def apend_total_process_to_interface():
 def process_module():
     # export this module to the main function
     apend_total_process_to_interface()
-    apend_data_to_interface()
+    apend_process_with_cpu_usage_to_interface()
