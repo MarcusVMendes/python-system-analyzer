@@ -4,11 +4,11 @@ from time import sleep
 
 
 def main():
-    """ Main execution of modules """
-    process_module()
-
-    """ Loop config """
     while True:
+        """ Main execution of modules """
+        process_module()
+
+        """ Loop config """
         try:
             ui.display()
             sleep(1)

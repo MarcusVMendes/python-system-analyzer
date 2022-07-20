@@ -17,10 +17,10 @@ def process_with_cpu_usage():
 
         if iter_proc['name'] not in name_list:
             name_list.append(iter_proc['name'])
-            process_list.append(iter_proc)
+        process_list.append(iter_proc)
 
     process_list.sort(key=lambda k: k['cpu_percent'], reverse=True)
-    return process_list
+    return process_list[:10]
 
 
 """"
@@ -36,10 +36,10 @@ def apend_data_to_interface():
     """
     data = process_with_cpu_usage()
     interface = ui.items[0].items[0]
-    interface.text += f"{'PID':>6}{'NAME':>10}{'CPU %':>10}{'STATUS':>10}\n"
-
-    for process in data[:10]:
-        interface.text += "{:>7}{:>10}{:>9.1f}{:>12}\n".format(
+    interface.text = f"{'PID':>6}{'NAME':>10}{'CPU %':>10}{'STATUS':>10}\n"
+    # print(data)
+    for process in data:
+        interface.text += "{:>6}{:>10}{:>9}{:>12}\n".format(
             process['pid'],
             process['name'],
             process['cpu_percent'],
