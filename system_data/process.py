@@ -3,6 +3,10 @@ from dashboard.interface import ui
 
 
 def process_with_cpu_usage():
+    """
+    Return a list of dictionaries containing pid, name, cpu_percent
+    and status keys
+    """
     process_list = []
     name_list = []
     for process in process_iter():
@@ -26,6 +30,10 @@ https://psutil.readthedocs.io/en/latest/index.html?highlight=process_iter#psutil
 
 
 def apend_data_to_interface():
+    """
+    Get data from process_with_cpu_usage function and
+    apends this to dashboard interface
+    """
     data = process_with_cpu_usage()
     interface = ui.items[0].items[0]
     interface.text += f"{'PID':>6}{'NAME':>10}{'CPU %':>10}{'STATUS':>10}\n"
@@ -40,4 +48,5 @@ def apend_data_to_interface():
 
 
 def process_module():
+    # export this module to the main function
     apend_data_to_interface()
