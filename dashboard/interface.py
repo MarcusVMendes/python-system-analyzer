@@ -1,4 +1,4 @@
-from dashing import HSplit, VSplit, Text, HGauge, VGauge
+from dashing import HSplit, VSplit, Text, HGauge
 
 
 ui = HSplit(
@@ -8,8 +8,8 @@ ui = HSplit(
                 VSplit(
                     Text(' ', title='Memory Infos', border_color=5),
                     HSplit(
-                        VGauge(title='RAM', border_color=5),
-                        VGauge(title='SWAP', border_color=5),
+                        HGauge(title='RAM', border_color=5, color=4),
+                        HGauge(title='SWAP', border_color=5, color=4),
                     ),
                     title='Memory Section',
                     border_color=5

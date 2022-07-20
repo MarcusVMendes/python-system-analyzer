@@ -57,7 +57,15 @@ def apend_percent_virtual_memory_to_interface():
     interface.value = percent
 
 
+def apend_percent_swap_memory_to_interface():
+    data = get_swap_memory_infos()
+    interface = interface = ui.items[0].items[1].items[0].items[1].items[1]
+    percent = data.percent
+    interface.value = percent
+
+
 def memory_module():
     apend_virtual_memory_infos_to_interface()
     apend_swap_memory_infos_to_interface()
     apend_percent_virtual_memory_to_interface()
+    apend_percent_swap_memory_to_interface()
