@@ -64,6 +64,7 @@ def apend_percentage_of_cpu_per_core_to_interface():
 
 
 def cpu_module():
+    # export this module to the main function
     apend_cpu_freq_to_interface()
     apend_total_cpu_percent_usage_to_interface()
     apend_percentage_of_cpu_per_core_to_interface()

@@ -40,7 +40,6 @@ def apend_process_with_cpu_usage_to_interface():
     data = process_with_cpu_usage()
     interface = ui.items[0].items[0]
     interface.text = f"{'PID':>6}{'NAME':>10}{'CPU %':>10}{'STATUS':>10}\n"
-    # print(data)
     for process in data:
         interface.text += "{:>6}{:>10}{:>9}{:>12}\n".format(
             process['pid'],
