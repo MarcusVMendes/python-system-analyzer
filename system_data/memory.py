@@ -1,6 +1,29 @@
 from dashboard.interface import ui
-from psutil import virtual_memory, swap_memory
+from utils.converters import convert_bytes_to_gigas
+from psutil import virtual_memory
 
 
-def get_virtual_memory():
-    vmem = virtual_memory().as_dict(['total', 'avaliable', 'used', 'percent'])
+def get_virtual_memory_infos():
+    virtual_memory_infos = virtual_memory()
+    return virtual_memory_infos
+
+
+def apend_virtual_memory_infos_to_interface():
+    data = get_virtual_memory_infos()
+    interface = ui.items[0].items[1].items[0].items[0]
+    interface.text = f"{'RAM':>4}{'AVAILABLE(GB)':>14}{'USED(GB)':>9}{'%':>4}"
+
+    available = convert_bytes_to_gigas(data.available)
+    used = convert_bytes_to_gigas(data.used)
+    percent = data.percent
+
+    interface.text += "\n{:>4}{:>10.2f}{:>10.2f}{:>8}".format(
+        '',
+        available,
+        used,
+        percent
+    )
+
+
+def memory_module():
+    apend_virtual_memory_infos_to_interface()
