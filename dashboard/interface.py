@@ -1,4 +1,4 @@
-from dashing import HSplit, VSplit, Text
+from dashing import HSplit, VSplit, Text, HGauge
 
 
 ui = HSplit(
@@ -7,7 +7,11 @@ ui = HSplit(
             Text(' ', border_color=3),
         ),
         VSplit(
-            Text(' '),
+            HGauge(border_color=2, title='Total CPU usage'),
+            HGauge(border_color=2, title='CORE-1'),
+            HGauge(border_color=2, title='CORE-2'),
+            HGauge(border_color=2, title='CORE-3'),
+            HGauge(border_color=2, title='CORE-4'),
             border_color=2,
             title='CPU Section'
         ),
