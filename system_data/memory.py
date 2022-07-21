@@ -19,7 +19,7 @@ def apend_virtual_memory_infos_to_interface():
     """
     data = get_virtual_memory_infos()
     interface = ui.items[0].items[1].items[0].items[0]
-    interface.text = f"{'RAM':>4}{'AVAILABLE(GB)':>14}{'USED(GB)':>9}{'%':>4}"
+    interface.text = f"{'RAM':>3}{'AVAILABLE(GB)':>15}{'USED(GB)':>9}{'%':>4}"
 
     available = convert_bytes_to_gigas(data.available)
     used = convert_bytes_to_gigas(data.used)
